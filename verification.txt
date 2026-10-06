@@ -1,0 +1,21 @@
+Проверка проекта bevy-lab04-camera
+Дата: 6 октября 2026. Среда: Ubuntu 24.04 x86_64.
+Версии: rustc 1.98.1, cargo 1.98.1, clippy 0.1.98, rustfmt 1.8.0, Bevy 0.19.1.
+
+cargo fmt --check                                     -> OK
+cargo clippy --locked --all-targets -- -D warnings    -> OK, 0 предупреждений
+cargo test --locked                                   -> 9 passed, 0 failed (камера 5, симуляция 3, FPS 1)
+cargo run --locked под Xvfb + twm                     -> окно открыто, заголовок меняется:
+   title_start=Lab04 [26 FPS]
+   title_rotated=Lab04 [25 FPS]
+   title_zoom=Lab04 [22 FPS]
+Клавиши Left (1 с), Up (0,3 с), = (0,4 с) поданы через X-сервер утилитой xdotool;
+сцена повернулась примерно на 90°, камера поднялась и приблизилась (screenshots/).
+Адаптер: llvmpipe (Mesa, Vulkan), программный рендер без видеокарты.
+
+Консоль:
+Создан объект: GraphicObject { position: Vec3(4.0, 0.0, 0.0), angle_deg: 180.0, color: Vec3(1.0, 0.0, 0.0) }
+Создан объект: GraphicObject { position: Vec3(-4.0, 0.0, 0.0), angle_deg: 0.0, color: Vec3(0.0, 0.0, 1.0) }
+Создан объект: GraphicObject { position: Vec3(0.0, 0.0, -4.0), angle_deg: 90.0, color: Vec3(0.0, 1.0, 0.0) }
+Создан объект: GraphicObject { position: Vec3(0.0, 0.0, 4.0), angle_deg: 270.0, color: Vec3(1.0, 1.0, 1.0) }
+Позиция камеры: Vec3(10.000002, 15.0, 17.5)
