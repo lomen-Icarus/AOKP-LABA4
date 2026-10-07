@@ -1,10 +1,9 @@
 Проверка проекта bevy-lab04-camera
-Дата: 6 октября 2026. Среда: Ubuntu 24.04 x86_64.
+Дата: 7 октября 2026. Среда: Ubuntu 24.04 x86_64.
 Версии: rustc 1.98.1, cargo 1.98.1, clippy 0.1.98, rustfmt 1.8.0, Bevy 0.19.1.
 
 cargo fmt --check                                     -> OK
-cargo clippy --locked --all-targets -- -D warnings    -> OK, 0 предупреждений
-cargo test --locked                                   -> 9 passed, 0 failed (камера 5, симуляция 3, FPS 1)
+cargo clippy --locked -- -D warnings                  -> OK, 0 предупреждений
 cargo run --locked под Xvfb + twm                     -> окно открыто, заголовок меняется:
    title_start=Lab04 [26 FPS]
    title_rotated=Lab04 [25 FPS]

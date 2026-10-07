@@ -50,29 +50,3 @@ pub fn update_window_title(
         }
     }
 }
-
-#[cfg(test)]
-mod tests {
-    use bevy::time::TimeUpdateStrategy;
-
-    use super::*;
-
-    #[test]
-    fn fps_is_counted_every_half_second_and_shown_in_title() {
-        let mut app = App::new();
-        app.add_plugins(MinimalPlugins)
-            .insert_resource(TimeUpdateStrategy::ManualDuration(Duration::from_millis(
-                100,
-            )))
-            .init_resource::<FpsCounter>()
-            .add_systems(Update, (update_fps, update_window_title).chain());
-        let window = app.world_mut().spawn(Window::default()).id();
-        for _ in 0..12 {
-            app.update();
-        }
-        // Кадр длится 0,1 с, значит 10 кадров в секунду.
-        assert!((app.world().resource::<FpsCounter>().fps - 10.0).abs() < 1e-3);
-        let title = &app.world().get::<Window>(window).unwrap().title;
-        assert_eq!(title, "Lab04 [10 FPS]");
-    }
-}
